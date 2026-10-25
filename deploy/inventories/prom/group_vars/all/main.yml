@@ -1,0 +1,10 @@
+---
+audit_svc__registry: harbor.localtest.me:8443
+audit_svc__image: "{{ audit_svc__registry }}/demo/audit-svc"
+audit_svc__image_tag: latest
+audit_svc__network: audit
+audit_svc__root: /data/audit-svc
+audit_svc__db_name: audit
+audit_svc__db_user: audit_svc
+audit_svc__db_password: "{{ vault_audit_svc_password }}"
+audit_svc__postgres_password: "{{ vault_postgres_password }}"

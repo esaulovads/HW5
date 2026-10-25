@@ -1,0 +1,16 @@
+.git
+.gitignore
+.editorconfig
+.venv
+.pytest_cache
+__pycache__
+*.pyc
+dist
+tests
+deploy
+monitoring
+screenshots
+.gitlab-ci.yml
+Dockerfile
+.dockerignore
+REPORT.md
