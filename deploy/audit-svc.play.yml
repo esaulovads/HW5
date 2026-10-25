@@ -115,6 +115,9 @@
           - "{{ ansible_facts['user_gid'] }}"
       register: audit_service
 
+    - name: Flush handlers
+      ansible.builtin.meta: flush_handlers
+
     - name: Wait for audit-svc
       ansible.builtin.uri:
         url: "http://{{ __svc_ip }}:8080/healthz"
@@ -159,6 +162,10 @@
       ansible.builtin.uri:
         url: "http://{{ __svc_ip }}:8080/reload"
         method: POST
+      register: __reload
+      until: __reload.status == 200
+      retries: 10
+      delay: 2
 
     - name: Reload nginx
       community.docker.docker_container_exec:
